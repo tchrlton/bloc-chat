@@ -7,7 +7,9 @@ class RoomList extends Component {
 
          this.state = {
             title: "",
-            rooms: []
+            creator: "",
+            rooms: [],
+            toEdit: ""
         };
         
          this.roomsRef = this.props.firebase.database().ref('rooms');
@@ -18,14 +20,21 @@ class RoomList extends Component {
     }
 
     handleChange(e) {
-        this.setState( {title: e.target.value});
-
+        e.preventDefault();
+        this.setState({
+            title: e.target.value, 
+            creator: this.props.user
+        });
     }
 
     createRoom(e) {
         e.preventDefault();
-        this.roomsRef.push( {title: this.state.title });
-        this.setState({ title: "" });
+        this.roomsRef.push({
+            title: this.state.title,
+            creator: this.state.creator 
+        });
+        console.log();
+        this.setState({ title: "", creator: "" });
     }
 
     deleteRoom(roomKey) {
@@ -57,7 +66,8 @@ class RoomList extends Component {
           snapshot.forEach((room) => {
             roomChanges.push({
               key: room.key,
-              title: room.val().title
+              title: room.val().title,
+              creator: room.val().creator
             });
           });
           this.setState({ rooms: roomChanges})
@@ -78,18 +88,23 @@ class RoomList extends Component {
      );
 
      const roomList = this.state.rooms.map((room) =>
-     <li key={room.key}>
-       {this.state.toEdit === room.key ?
-         this.editRoom(room)
-       :
-       <div>
-         <h4 onClick={(e) => this.selectRoom(room, e)}>{room.title}</h4>
-         <button onClick={() => this.deleteRoom(room.key)}>Remove</button>
-         <button onClick={() => this.setState({toEdit: room.key})}>Edit</button>
-       </div>
-       }
-     </li>
-    );
+      <li key={room.key}>
+        {this.state.toEdit === room.key ?
+          this.editRoom(room)
+        :
+        <div>
+          <h4 onClick={(e) => this.selectRoom(room, e)}>{room.title}</h4>
+          {this.props.user === room.creator ?
+            <div>
+              <button onClick={() => this.deleteRoom(room.key)}>Remove</button>
+              <button onClick={() => this.setState({toEdit: room.key})}>Edit</button>
+            </div>
+          : null
+          }
+        </div>
+        }
+      </li>
+     );
     
       return (
           <div>
