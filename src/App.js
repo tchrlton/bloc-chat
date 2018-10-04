@@ -44,7 +44,7 @@ class App extends Component {
         </header>
         <h1>{this.state.activeRoom.title || "Select A Room"}</h1>
         <User firebase={firebase} setUser={this.setUser} welcome={currentUser} />
-        <RoomList firebase={firebase} activeRoom={this.activeRoom} />
+        <RoomList firebase={firebase} activeRoom={this.activeRoom} user={currentUser}/>
         {showMessages ?
          (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={currentUser} />)
         : null

@@ -21,6 +21,7 @@ class RoomList extends Component {
 
     handleChange(e) {
         e.preventDefault();
+        JSON.stringify(this.state);
         this.setState({
             title: e.target.value, 
             creator: this.props.user
@@ -31,7 +32,7 @@ class RoomList extends Component {
         e.preventDefault();
         this.roomsRef.push({
             title: this.state.title,
-            creator: this.state.creator 
+            creator: this.props.user 
         });
         console.log();
         this.setState({ title: "", creator: "" });
