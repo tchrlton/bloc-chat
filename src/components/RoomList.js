@@ -21,6 +21,7 @@ class RoomList extends Component {
 
     handleChange(e) {
         e.preventDefault();
+        //Check the state to see if creator is undefined
         JSON.stringify(this.state);
         this.setState({
             title: e.target.value, 
@@ -34,7 +35,6 @@ class RoomList extends Component {
             title: this.state.title,
             creator: this.props.user 
         });
-        console.log();
         this.setState({ title: "", creator: "" });
     }
 
