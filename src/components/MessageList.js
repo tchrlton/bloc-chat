@@ -108,9 +108,14 @@ class MessageList extends Component {
                   this.editMessage(message)
                   :
                   <div>
-                    <h3>{message.content}</h3>
-                    <button onClick={() => this.setState({toEdit: message.key})}>Edit</button>
-                    <button onClick={() => this.deleteMessage(message.key)}>Delete</button>
+                   <h3>{message.content}</h3>
+                   {this.props.user === message.username ?
+                    <div>
+                     <button onClick={() => this.setState({toEdit: message.key})}>Edit</button>
+                     <button onClick={() => this.deleteMessage(message.key)}>Delete</button>
+                    </div>
+                    : null
+                   }
                   </div>
                 }
               </li>
