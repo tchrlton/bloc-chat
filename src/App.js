@@ -44,11 +44,11 @@ class App extends Component {
          <header className="App-header navbar-header sidenav">
            <h1 className="App-title navbar-brand">Bloc Chat</h1>
          </header>
-         <h1>{this.state.activeRoom.title || "Select A Room"}</h1>
          <User firebase={firebase} setUser={this.setUser} welcome={currentUser} />
          <RoomList firebase={firebase} activeRoom={this.activeRoom} user={currentUser}/>
         </nav>
        </div>
+         <h1>{this.state.activeRoom.title || "Select A Room"}</h1>
          {showMessages ?
           (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={currentUser} />)
          : null
