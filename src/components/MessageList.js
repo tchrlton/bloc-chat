@@ -102,7 +102,7 @@ class MessageList extends Component {
 
         const messageList = (
             this.state.messages.map((message) =>
-              <li key={message.key}>
+              <li className="list-unstyled" key={message.key}>
                 <h2>{message.username}:</h2>
                 {(this.state.toEdit === message.key) && (this.props.user === message.username) ?
                   this.editMessage(message)
@@ -124,8 +124,8 @@ class MessageList extends Component {
 
         return (
             <div>
+                <ul>{messageList}</ul>                
                 <div>{messageBar}</div>
-                <ul>{messageList}</ul>
             </div>
         );
     }

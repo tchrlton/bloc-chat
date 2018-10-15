@@ -89,7 +89,7 @@ class RoomList extends Component {
      );
 
      const roomList = this.state.rooms.map((room) =>
-      <li key={room.key}>
+      <li className="list-unstyled" key={room.key}>
         {this.state.toEdit === room.key ?
           this.editRoom(room)
         :

@@ -38,18 +38,22 @@ class App extends Component {
     const currentUser = this.state.user === null ? "Guest" : this.state.user.displayName;
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Bloc Chat</h1>
-        </header>
-        <h1>{this.state.activeRoom.title || "Select A Room"}</h1>
-        <User firebase={firebase} setUser={this.setUser} welcome={currentUser} />
-        <RoomList firebase={firebase} activeRoom={this.activeRoom} user={currentUser}/>
-        {showMessages ?
-         (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={currentUser} />)
-        : null
-        }
-      </div>
+      <div className="App container-fluid row">
+       <div className="col-sm-4">
+        <nav className="container-fluid">
+         <header className="App-header navbar-header sidenav">
+           <h1 className="App-title navbar-brand">Bloc Chat</h1>
+         </header>
+         <h1>{this.state.activeRoom.title || "Select A Room"}</h1>
+         <User firebase={firebase} setUser={this.setUser} welcome={currentUser} />
+         <RoomList firebase={firebase} activeRoom={this.activeRoom} user={currentUser}/>
+        </nav>
+       </div>
+         {showMessages ?
+          (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={currentUser} />)
+         : null
+         }
+       </div>
     );
   }
 }
