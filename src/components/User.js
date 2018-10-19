@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './User.css';
 
 class User extends Component {
     constructor(props) {
@@ -29,13 +30,17 @@ class User extends Component {
 
     render() {
         return(
-            <div>
-              <h4>Welcome, {this.props.welcome}</h4>
-              { this.props.welcome === "Guest" ?
-                <button onClick={this.signIn}>Sign In</button>
-                :
-                <button onClick={this.signOut}>Sign Out</button>
-              }
+            <div className="right-navbar">
+              <div className="user-welcome">
+               <h3 className="Welcome nav-2">Welcome, {this.props.welcome}</h3>
+              </div>
+              <div className="nav-button">
+                { this.props.welcome === "Guest" ?
+                  <button onClick={this.signIn}>Sign In</button>
+                  :
+                  <button onClick={this.signOut}>Sign Out</button>
+                }
+              </div>
             </div>
         );
     }

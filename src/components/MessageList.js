@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './MessageList.css';
 
 class MessageList extends Component {
     constructor(props) {
@@ -94,21 +95,23 @@ class MessageList extends Component {
     render() {
 
         const messageBar = (
-            <form onSubmit={this.createMessage}>
+           <div>
+            <form className="input-fullwidth" onSubmit={this.createMessage}>
               <input type="text" value={this.state.content} placeholder="Enter Message" onChange={this.handleChange}/>
               <input type="submit" value="Send" />
             </form>
+           </div>
         );
 
         const messageList = (
             this.state.messages.map((message) =>
               <li className="list-unstyled" key={message.key}>
-                <h2>{message.username}:</h2>
+                <h2 className="message-username">{message.username}:</h2>
                 {(this.state.toEdit === message.key) && (this.props.user === message.username) ?
                   this.editMessage(message)
                   :
                   <div>
-                   <h3>{message.content}</h3>
+                   <h3 className="message-content">{message.content}</h3>
                    {this.props.user === message.username ?
                     <div>
                      <button onClick={() => this.setState({toEdit: message.key})}>Edit</button>
@@ -124,8 +127,8 @@ class MessageList extends Component {
 
         return (
             <div>
-                <ul>{messageList}</ul>                
-                <div>{messageBar}</div>
+                <ul className="message-list">{messageList}</ul>                
+                <div className="message-bar">{messageBar}</div>
             </div>
         );
     }

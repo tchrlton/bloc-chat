@@ -1,0 +1,16 @@
+.message-username {
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.message-content {
+    font-size: 
+}
+
+.input-fullwidth {
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    position: fixed;
+    width: inherit;
+}

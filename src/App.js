@@ -39,21 +39,27 @@ class App extends Component {
 
     return (
       <div className="App container-fluid row">
-       <div className="col-sm-4">
-        <nav className="container-fluid">
-         <header className="App-header navbar-header sidenav">
-           <h1 className="App-title navbar-brand">Bloc Chat</h1>
-         </header>
-         <User firebase={firebase} setUser={this.setUser} welcome={currentUser} />
-         <RoomList firebase={firebase} activeRoom={this.activeRoom} user={currentUser}/>
-        </nav>
+       <nav id="navbar" className="navbar navbar-inverse fixed-top navbar-dark">
+         <h1 className="App-title navbar-brand text-bold">Bloc Chat</h1>
+         <User className="User" firebase={firebase} setUser={this.setUser} welcome={currentUser} />
+       </nav>
+       <div className="App-body container-fluid row">
+        <div className="App-left col-sm-4 text-center">
+          <RoomList className="room-list" firebase={firebase} activeRoom={this.activeRoom} user={currentUser}/>
+        </div>
+        <div className="App-right">
+          <div className="active-room">
+           <h4>{this.state.activeRoom.title || "Select A Room"}</h4>
+          </div>
+          <div className="message-list col-sm-8">
+           {showMessages ?
+            (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={currentUser} />)
+           : null
+           }
+          </div>
+        </div>
        </div>
-         <h1>{this.state.activeRoom.title || "Select A Room"}</h1>
-         {showMessages ?
-          (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={currentUser} />)
-         : null
-         }
-       </div>
+      </div>
     );
   }
 }

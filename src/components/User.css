@@ -1,0 +1,14 @@
+.Welcome {
+    font-size: 1.25em;
+    color: white;
+}
+
+.user-welcome {
+    float: left;
+    padding: 17px 10px 15px 15px;
+}
+
+.nav-button {
+    float: right;
+    padding: 15px;
+}

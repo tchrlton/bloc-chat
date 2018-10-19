@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './MessageList.css';
 
 
 class RoomList extends Component {
@@ -89,7 +90,7 @@ class RoomList extends Component {
      );
 
      const roomList = this.state.rooms.map((room) =>
-      <li className="list-unstyled" key={room.key}>
+      <li className="list-unstyled text-center room-list" key={room.key}>
         {this.state.toEdit === room.key ?
           this.editRoom(room)
         :
