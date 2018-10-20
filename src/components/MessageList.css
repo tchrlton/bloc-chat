@@ -8,9 +8,7 @@
 }
 
 .input-group {
-    right: 0px;
-    left: 0px;
+    left: 455px;
     bottom: 0px;
     position: fixed;
-    width: inherit;
 }
