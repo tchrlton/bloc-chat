@@ -96,7 +96,7 @@ class MessageList extends Component {
 
         const messageBar = (
            <div>
-            <form className="input-fullwidth" onSubmit={this.createMessage}>
+            <form className="input-group input-group-lg" onSubmit={this.createMessage}>
               <input type="text" value={this.state.content} placeholder="Enter Message" onChange={this.handleChange}/>
               <input type="submit" value="Send" />
             </form>

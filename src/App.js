@@ -44,8 +44,10 @@ class App extends Component {
          <User className="User" firebase={firebase} setUser={this.setUser} welcome={currentUser} />
        </nav>
        <div className="App-body container-fluid row">
-        <div className="App-left col-sm-4 text-center">
+        <div className="flex-column App-left col-sm-4 text-center">
+         <div className="room-list">
           <RoomList className="room-list" firebase={firebase} activeRoom={this.activeRoom} user={currentUser}/>
+         </div>
         </div>
         <div className="App-right">
           <div className="active-room">
