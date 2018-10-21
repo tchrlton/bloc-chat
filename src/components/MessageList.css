@@ -1,14 +1,31 @@
 .message-username {
     font-weight: bold;
-    font-size: 150%;
+    font-size: 110%;
 }
 
 .message-content {
-    font-size: 
+    font-size: 120%;
 }
 
 .input-group {
-    left: 455px;
+    left: 450px;
     bottom: 0px;
     position: fixed;
+}
+
+.whole-message {
+
+}
+
+.message-list {
+    padding: 5px;
+}
+
+.indiv-message {
+    padding: 10px;
+}
+
+
+.message-buttons {
+    float: right;
 }

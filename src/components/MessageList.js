@@ -95,9 +95,9 @@ class MessageList extends Component {
     render() {
 
         const messageBar = (
-           <div>
-            <form className="input-group input-group-lg" onSubmit={this.createMessage}>
-              <input type="text" value={this.state.content} placeholder="Enter Message" onChange={this.handleChange}/>
+           <div className="message-form">
+            <form className="input-group" onSubmit={this.createMessage}>
+              <input className="input-text" type="text" value={this.state.content} placeholder="Enter Message" style={{width: '64.55%'}} onChange={this.handleChange}/>
               <input type="submit" value="Send" />
             </form>
            </div>
@@ -105,15 +105,15 @@ class MessageList extends Component {
 
         const messageList = (
             this.state.messages.map((message) =>
-              <li className="list-unstyled" key={message.key}>
-                <h2 className="message-username">{message.username}:</h2>
+              <li className="list-unstyled indiv-message" key={message.key}>
+                <h2 className="message-username">{message.username}</h2>
                 {(this.state.toEdit === message.key) && (this.props.user === message.username) ?
                   this.editMessage(message)
                   :
-                  <div>
-                   <h3 className="message-content">{message.content}</h3>
+                  <div className="whole-message">
+                   <h2 className="message-content">{message.content}</h2>
                    {this.props.user === message.username ?
-                    <div>
+                    <div className="message-buttons">
                      <button onClick={() => this.setState({toEdit: message.key})}>Edit</button>
                      <button onClick={() => this.deleteMessage(message.key)}>Delete</button>
                     </div>

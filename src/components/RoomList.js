@@ -22,7 +22,6 @@ class RoomList extends Component {
 
     handleChange(e) {
         e.preventDefault();
-        //Check the state to see if creator is undefined
         JSON.stringify(this.state);
         this.setState({
             title: e.target.value, 
