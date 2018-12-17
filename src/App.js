@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <div className="App container-fluid row">
        <nav id="navbar" className="navbar navbar-inverse fixed-top navbar-dark">
-         <h1 className="App-title navbar-brand text-bold">Bloc Chat</h1>
+         <h1 className="App-title navbar-brand text-bold">React Chat</h1>
          <User className="User" firebase={firebase} setUser={this.setUser} welcome={currentUser} />
        </nav>
        <div className="App-body container-fluid row">
